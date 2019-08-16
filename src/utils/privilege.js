@@ -4,7 +4,6 @@ import NProgress from 'nprogress' // 进度条使用
 import 'nprogress/nprogress.css'
 
 let whiteList = ['/login']
-
 router.beforeEach((to, from, next) => {
   NProgress.start()
   let hasToken = getToken()
