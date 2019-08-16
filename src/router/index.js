@@ -10,10 +10,6 @@ export let constantRouterMap = [
     path: '/',
     component: Index,
     redirect: '/dashboard',
-    meta: {
-      icon: 'fa fa-dashboard',
-      title: 'Dashboard'
-    },
     children: [
       {
         path: '/dashboard',
@@ -29,10 +25,6 @@ export let constantRouterMap = [
   {
     path: '/module',
     component: Index,
-    meta: {
-      icon: 'fa fa-database',
-      title: '组件'
-    },
     children: [
       {
         path: '/module',
@@ -48,10 +40,6 @@ export let constantRouterMap = [
   {
     path: '/optimize',
     component: Index,
-    meta: {
-      icon: 'fa fa-rocket',
-      title: '优化'
-    },
     children: [
       {
         path: '/optimize',
@@ -67,10 +55,6 @@ export let constantRouterMap = [
   {
     path: '/language',
     component: Index,
-    meta: {
-      icon: 'fa fa-language',
-      title: '多语言'
-    },
     children: [
       {
         path: '/language',
