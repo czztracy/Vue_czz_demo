@@ -32,7 +32,7 @@ export default {
     sidebarItem
   },
   mounted () {
-    console.log(this.$router.options.routes, this.$router)
+    // console.log(this.$router.options.routes, this.$route)
   }
 }
 </script>

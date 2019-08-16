@@ -8,7 +8,6 @@ Vue.use(Router)
 export let constantRouterMap = [
   {
     path: '/',
-    name: 'Index',
     component: Index,
     redirect: '/dashboard',
     meta: {
@@ -18,7 +17,7 @@ export let constantRouterMap = [
     children: [
       {
         path: '/dashboard',
-        name: 'Dashboard',
+        name: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         meta: {
           icon: 'fa fa-dashboard',
