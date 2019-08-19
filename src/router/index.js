@@ -81,6 +81,16 @@ export let constantRouterMap = [
     ]
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login/index'),
+    hidden: true
+  }
+]
+
+// 动态路由
+export let asyncRouterMap = [
+  {
     path: '/language',
     component: Index,
     name: 'language',
@@ -92,21 +102,13 @@ export let constantRouterMap = [
         meta: {
           icon: 'fa fa-language',
           title: '多语言',
-          noChild: true
+          noChild: true,
+          roles: ['Czz']
         }
       }
     ]
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/login/index'),
-    hidden: true
   }
 ]
-
-// 动态路由
-export let asyncRouterMap = []
 
 export default new Router({
   mode: 'hash',

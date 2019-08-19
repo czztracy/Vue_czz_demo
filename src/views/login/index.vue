@@ -31,11 +31,18 @@
 </template>
 
 <script>
-import { setToken } from '@/utils/cookie'
-import { setTimeout } from 'timers'
+// import { setToken } from '@/utils/cookie'
+import { isvalidUsername } from '@/utils/validate'
 export default {
   name: 'login',
   data () {
+    const validateUsername = (rule, value, callback) => {
+      if (!isvalidUsername(value)) {
+        callback(new Error('请输入正确的用户名'))
+      } else {
+        callback()
+      }
+    }
     return {
       form: {
         name: '',
@@ -43,28 +50,39 @@ export default {
       },
       rules: {
         name: [
-          { required: true, message: '用户名不能为空', trigger: 'blur' }
+          { required: true, trigger: 'blur', validator: validateUsername }
         ],
         password: [
           { required: true, message: '密码不能为空', trigger: 'blur' }
         ]
       },
-      loading: false
+      loading: false,
+      redirect: undefined
     }
   },
   computed: {
   },
+  watch: {
+    $route: {
+      handler (route) {
+        this.redirect = route.query && route.query.redirect
+      },
+      immediate: true
+    }
+  },
   methods: {
     doLogin () {
-      this.loading = true
-      this.$refs.form.validate(async validate => {
-        setTimeout(() => {
-          if (validate) {
-            setToken(this.form.name)
-            this.$router.push('/language')
-          }
-          this.loading = false
-        }, 2000)
+      this.$refs.form.validate(validate => {
+        if (validate) {
+          this.loading = true
+          this.$store.dispatch('LoginByUsername', this.form).then(() => {
+            this.loading = false
+            // setToken(this.form.name)
+            this.$router.push({ path: this.redirect || '/optimize' })
+          }).catch(() => {
+            this.loading = false
+          })
+        }
       })
     }
   }

@@ -4,7 +4,7 @@ import { Message } from 'element-ui'
 import { removeToken } from '@/utils/cookie'
 
 const service = axios.create({
-  baseURL: process.env.BASE_URL,
+  baseURL: 'http://localhost:9527',
   timeout: 60000
 })
 
@@ -15,19 +15,12 @@ service.interceptors.request.use(
     return config
   },
   error => {
-    return Promise.reject(error)
+    Promise.reject(error)
   }
 )
 
 service.interceptors.response.use(
-  response => {
-    const responseCode = response.status
-    if (responseCode === 200) {
-      return Promise.resolve(response)
-    } else {
-      return Promise.reject(response)
-    }
-  },
+  response => response.data,
   error => {
     // 断网 或者 请求超时 状态
     if (!error.response) {
@@ -60,14 +53,12 @@ service.interceptors.response.use(
         // 清除token
         removeToken()
         // 跳转登录页面，并将要浏览的页面fullPath传过去，登录成功后跳转需要访问的页面
-        setTimeout(() => {
-          router.replace({
-            path: '/login',
-            query: {
-              redirect: router.currentRoute.fullPath
-            }
-          })
-        }, 1000)
+        router.replace({
+          path: '/login',
+          query: {
+            redirect: router.currentRoute.fullPath
+          }
+        })
         break
       // 404 请求不存在
       case 404:

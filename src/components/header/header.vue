@@ -19,7 +19,6 @@
 
 <script>
 // import { mapGetters } from 'vuex'
-import { removeToken } from '@/utils/cookie'
 
 export default {
   // computed: {
@@ -46,10 +45,9 @@ export default {
         }
       })
       this.levelList = matched
-      console.log(this.$route.matched)
     },
     handlelogout () {
-      removeToken('Czz')
+      this.$store.dispatch('FedLogOut')
       this.$router.push({ path: '/login' })
     }
   },

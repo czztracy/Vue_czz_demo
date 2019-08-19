@@ -1,0 +1,6 @@
+{
+  "code": 200,
+  "token": "leader",
+  "success": true,
+  "roles": ["leader"]
+}

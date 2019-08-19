@@ -10,7 +10,7 @@
       mode="vertical"
       class="el-menu-vertical-demo">
       <sidebarItem
-        v-for="route in routes"
+        v-for="route in permission_routers"
         :key="route.name"
         :item="route"
         :base-path="route.path"></sidebarItem>
@@ -23,10 +23,7 @@ import { mapGetters } from 'vuex'
 import sidebarItem from './sidebarItem'
 export default {
   computed: {
-    ...mapGetters(['isCollapse']),
-    routes () {
-      return this.$router.options.routes
-    }
+    ...mapGetters(['isCollapse', 'permission_routers'])
   },
   components: {
     sidebarItem

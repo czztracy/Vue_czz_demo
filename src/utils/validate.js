@@ -7,3 +7,9 @@ export function validateURL (textval) {
 export function isExternal (path) {
   return /^(https?:|mailto:|tel:)/.test(path)
 }
+// 登录限制
+export function isvalidUsername (str) {
+  // eslint-disable-next-line camelcase
+  const valid_map = ['Czz', 'leader']
+  return valid_map.indexOf(str.trim()) >= 0
+}
