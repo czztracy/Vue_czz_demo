@@ -22,7 +22,7 @@
             <el-form-item>
               <el-button type="primary" style="width: 100%" size="small" @click="doLogin" :loading="loading">{{loading ? '正在登陆中...' : '登录'}}</el-button>
             </el-form-item>
-            <p style="font-size: 12px;text-align: center;color: #999;">输入任意用户名密码登录</p>
+            <p style="font-size: 12px;text-align: center;color: #999;">用户名Czz,leader,输入任意密码登录</p>
           </el-form>
         </el-card>
       </div>
@@ -78,7 +78,7 @@ export default {
           this.$store.dispatch('LoginByUsername', this.form).then(() => {
             this.loading = false
             // setToken(this.form.name)
-            this.$router.push({ path: this.redirect || '/optimize' })
+            this.$router.push({ path: this.redirect || '/' })
           }).catch(() => {
             this.loading = false
           })
