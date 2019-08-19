@@ -20,7 +20,7 @@ router.beforeEach((to, from, next) => {
           const roles = res.roles
           store.dispatch('GenerateRoutes', { roles }).then(() => {
             router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
-            next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
+            next({ ...to, replace: true }) // 确保addRoutes已完成
           })
         }).catch(err => {
           Message.error(err || 'Verification failed, please login again')
