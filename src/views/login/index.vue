@@ -61,7 +61,7 @@ export default {
         setTimeout(() => {
           if (validate) {
             setToken(this.form.name)
-            this.$router.push('/')
+            this.$router.push('/language')
           }
           this.loading = false
         }, 2000)

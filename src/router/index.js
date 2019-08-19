@@ -9,15 +9,25 @@ export let constantRouterMap = [
   {
     path: '/',
     component: Index,
-    redirect: '/dashboard',
+    redirect: '/dashboard/index',
+    meta: { title: '主页', icon: 'fa fa-dashboard' },
     children: [
       {
-        path: '/dashboard',
+        path: '/dashboard/index',
         name: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         meta: {
-          icon: 'fa fa-dashboard',
+          icon: 'fa fa-automobile ',
           title: 'Dashboard'
+        }
+      },
+      {
+        path: '/dashboard/index1',
+        name: 'index1',
+        component: () => import('@/views/dashboard/index1'),
+        meta: {
+          icon: 'fa fa-balance-scale',
+          title: '主页1'
         }
       }
     ]
@@ -25,14 +35,24 @@ export let constantRouterMap = [
   {
     path: '/module',
     component: Index,
+    meta: { icon: 'fa fa-database', title: '组件' },
     children: [
       {
         path: '/module',
         name: 'Module',
         component: () => import('@/views/module/index'),
         meta: {
-          icon: 'fa fa-database',
-          title: '组件'
+          icon: 'fa fa-address-book-o',
+          title: '组件1'
+        }
+      },
+      {
+        path: '/module/index1',
+        name: 'MOD',
+        component: () => import('@/views/module/index1'),
+        meta: {
+          icon: 'fa fa-address-card',
+          title: '组件2'
         }
       }
     ]

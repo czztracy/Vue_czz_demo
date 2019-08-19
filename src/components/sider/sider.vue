@@ -3,9 +3,9 @@
     <!-- text-color="#333" active-text-color="#fff" -->
     <!-- background-color="rgb(0, 21, 41)"
       text-color="#fff" -->
+      <!-- :collapse="isCollapse" -->
     <el-menu :show-timeout="200"
       :default-active="$route.path"
-      :collapse="isCollapse"
       :unique-opened="true"
       mode="vertical"
       class="el-menu-vertical-demo">

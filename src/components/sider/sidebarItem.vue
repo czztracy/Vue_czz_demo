@@ -119,6 +119,14 @@ export default {
   margin-right: 20px;
   /* color: #fff; */
 }
+.el-submenu__title i {
+  font-size: 16px;
+  margin-right: 20px;
+}
+.el-menu.el-menu--inline .el-menu-item i {
+  font-size: 16px;
+  margin-right: 20px;
+}
 /* .el-menu-item.is-active {
   color: #fff;
 }

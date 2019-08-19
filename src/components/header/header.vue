@@ -1,32 +1,31 @@
 <template>
   <div class="logo">
-    <svg-icon
+    <!-- <svg-icon
       class-name="menu-fold"
       icon-class="menu-fold"
       @click="handleClickCollapse"
       >
-      <!-- :class="{'is-active': !isCollapse}" -->
-      <!-- :style="{ transform: isCollapse ? 'rotate(180deg)':'rotate(0deg)' }" -->
-      </svg-icon>
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item v-for="(item, index) in levelList" :key="index" :to="{ path: item.redirect || item.path }">
-          {{ item.meta.title }}
-        </el-breadcrumb-item>
-      </el-breadcrumb>
+      </svg-icon> -->
+    <el-breadcrumb separator="/">
+      <el-breadcrumb-item v-for="(item, index) in levelList" :key="index" :to="{ path: item.redirect || item.path }">
+        {{ item.meta.title }}
+      </el-breadcrumb-item>
+    </el-breadcrumb>
+    <span class="logout" @click="handlelogout">注销</span>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import pathToRegexp from 'path-to-regexp'
+// import { mapGetters } from 'vuex'
+import { removeToken } from '@/utils/cookie'
 
 export default {
-  computed: {
-    ...mapGetters(['isCollapse'])
-  },
+  // computed: {
+  //   ...mapGetters(['isCollapse'])
+  // },
   data () {
     return {
-      levelList: [{ name: '1' }]
+      levelList: null
     }
   },
   watch: {
@@ -35,28 +34,21 @@ export default {
     }
   },
   methods: {
-    handleClickCollapse () {
-      this.$store.dispatch('GET_ISCOLLAPSE', !this.isCollapse)
-    },
+    // handleClickCollapse () {
+    //   this.$store.dispatch('GET_ISCOLLAPSE', !this.isCollapse)
+    // },
     getBreadcrumb () {
-      const { params } = this.$route
       let matched = this.$route.matched.filter(item => {
-        if (item.name) {
-          var toPath = pathToRegexp.compile(item.path)
-          item.path = toPath(params)
+        if (item.meta && Object.keys(item.meta).length !== 0) {
           return true
         }
       })
-
-      // const first = matched[0]
-      // if (first && first.name.trim().toLocaleLowerCase() !== 'Dashboard'.toLocaleLowerCase()) {
-      //   matched = [{
-      //     path: '/dashboard',
-      //     meta: { title: 'dashboard' }
-      //   }].concat(matched)
-      // }
       this.levelList = matched
       console.log(this.$route.matched)
+    },
+    handlelogout () {
+      removeToken('Czz')
+      this.$router.push({ path: '/login' })
     }
   },
   created () {
@@ -68,6 +60,7 @@ export default {
 <style scoped>
 .logo {
   padding: 0 10px;
+  width: 100%;
 }
 .svg-iconmenu-fold {
   cursor: pointer;
@@ -79,8 +72,13 @@ export default {
   /* transition: .38s; */
   /* transform-origin: 50% 50%; */
 }
+.logo .logout {
+  float: right;
+  cursor: pointer;
+}
 .logo /deep/ .el-breadcrumb {
   float: left;
+  line-height: 65px;
 }
 /* .svg-iconmenu-fold.is-active {
   transform: rotate(180deg);
