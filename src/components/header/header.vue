@@ -7,8 +7,10 @@
       >
       </svg-icon> -->
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item v-for="(item, index) in levelList" :key="index" :to="{ path: item.redirect || item.path }">
-        {{ item.meta.title }}
+      <el-breadcrumb-item v-for="(item, index) in levelList" :key="index">
+        <!-- {{ item.meta.title }} -->
+        <span v-if="item.meta.noChild">{{ item.meta.title }}</span>
+        <router-link v-else :to=" item.redirect || item.path">{{ item.meta.title }}</router-link>
       </el-breadcrumb-item>
     </el-breadcrumb>
     <span class="logout" @click="handlelogout">注销</span>

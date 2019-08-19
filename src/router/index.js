@@ -9,16 +9,18 @@ export let constantRouterMap = [
   {
     path: '/',
     component: Index,
+    name: 'dashboard',
     redirect: '/dashboard/index',
     meta: { title: '主页', icon: 'fa fa-dashboard' },
     children: [
       {
         path: '/dashboard/index',
-        name: 'dashboard',
+        name: 'index',
         component: () => import('@/views/dashboard/index'),
         meta: {
           icon: 'fa fa-automobile ',
-          title: 'Dashboard'
+          title: 'Dashboard',
+          noChild: true
         }
       },
       {
@@ -27,7 +29,8 @@ export let constantRouterMap = [
         component: () => import('@/views/dashboard/index1'),
         meta: {
           icon: 'fa fa-balance-scale',
-          title: '主页1'
+          title: '主页1',
+          noChild: true
         }
       }
     ]
@@ -35,6 +38,7 @@ export let constantRouterMap = [
   {
     path: '/module',
     component: Index,
+    name: 'module',
     meta: { icon: 'fa fa-database', title: '组件' },
     children: [
       {
@@ -43,7 +47,8 @@ export let constantRouterMap = [
         component: () => import('@/views/module/index'),
         meta: {
           icon: 'fa fa-address-book-o',
-          title: '组件1'
+          title: '组件1',
+          noChild: true
         }
       },
       {
@@ -52,7 +57,8 @@ export let constantRouterMap = [
         component: () => import('@/views/module/index1'),
         meta: {
           icon: 'fa fa-address-card',
-          title: '组件2'
+          title: '组件2',
+          noChild: true
         }
       }
     ]
@@ -60,6 +66,7 @@ export let constantRouterMap = [
   {
     path: '/optimize',
     component: Index,
+    name: 'optimize',
     children: [
       {
         path: '/optimize',
@@ -67,7 +74,8 @@ export let constantRouterMap = [
         component: () => import('@/views/optimize/index'),
         meta: {
           icon: 'fa fa-rocket',
-          title: '优化'
+          title: '优化',
+          noChild: true
         }
       }
     ]
@@ -75,6 +83,7 @@ export let constantRouterMap = [
   {
     path: '/language',
     component: Index,
+    name: 'language',
     children: [
       {
         path: '/language',
@@ -82,7 +91,8 @@ export let constantRouterMap = [
         component: () => import('@/views/language/index'),
         meta: {
           icon: 'fa fa-language',
-          title: '多语言'
+          title: '多语言',
+          noChild: true
         }
       }
     ]
