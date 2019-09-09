@@ -13,6 +13,7 @@ export default {
     // ...mapGetters(['isCollapse'])
   },
   mounted () {
+    // false 为传入的参数
     // this.GET_ISCOLLAPSE(false)
     // .then(res => {
     //   console.log('ewa', res)
