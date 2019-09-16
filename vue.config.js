@@ -30,6 +30,12 @@ module.exports = {
         .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
     }
   },
+  // 基本路径
+  baseUrl: './',
+  // 输出文件目录
+  outputDir: 'dist',
+  // 生产环境是否生成 sourceMap 文件
+  productionSourceMap: false,
   // 配置 webpack-dev-serve 行为
   devServer: {
     port: 9527
